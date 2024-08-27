@@ -73,7 +73,7 @@ export default function Home() {
   };
 
   return (
-    <main className='flex min-h-screen flex-col items-center p-24'>
+    <main className='flex min-h-screen flex-col items-center p-4 lg:p-12'>
       <h1 className='text-4xl font-bold mb-16 animate'>MORGAN AI</h1>
 
       <h3 className='text-sm font-bold mb-8'>
@@ -81,7 +81,7 @@ export default function Home() {
         prompt with &quot;A photo of MOG&quot;
       </h3>
 
-      <div className='w-full max-w-2xl mb-8 flex gap-4'>
+      <div className='w-full max-w-2xl mb-8 lg:flex gap-4'>
         <input
           type='text'
           value={prompt}
@@ -92,7 +92,7 @@ export default function Home() {
         <button
           onClick={generateImages}
           disabled={isLoading}
-          className='bg-gradient-to-r from-indigo-500 to-purple-500 rounded font-bold py-2 px-4 whitespace-nowrap flex-shrink-0 disabled:opacity-50'
+          className='bg-gradient-to-r from-indigo-500 to-purple-500 rounded-b lg:rounded lg:rounded-l-none font-bold py-2 px-4 w-full lg:w-auto whitespace-nowrap flex-shrink-0 disabled:opacity-50 mt-4 lg:mt-0'
         >
           {isLoading ? 'Generating...' : 'Generate Images'}
         </button>
@@ -107,14 +107,14 @@ export default function Home() {
 
       {error && <div className='text-red-500 mb-4'>{error}</div>}
 
-      <div className='grid grid-cols-2 gap-4 mt-8 max-w-2xl w-full'>
+      <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mt-8 max-w-2xl w-full'>
         {images.map((imageUrl, index) => (
-          <div key={index} className='relative group'>
+          <div key={index} className='relative group w-full'>
             <Image
               src={imageUrl}
               alt={`Generated image ${index + 1}`}
-              width={400}
-              height={400}
+              width={600}
+              height={600}
               className='rounded-lg'
             />
             <button
