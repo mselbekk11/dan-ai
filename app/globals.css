@@ -31,3 +31,41 @@ body {
     text-wrap: balance;
   }
 }
+
+.animate {
+  display: inline-block;
+  background-image: linear-gradient(
+    -45deg,
+    /* #d5cefe,
+    #215dff,
+    #a99ded,
+    #482be0 */ #8b5cf6,
+    #a855f7,
+    #d946ef,
+    #ec4899 /* #f43f5e */
+  ) !important;
+  background-size: 300% !important;
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: Gradient 10s ease infinite !important;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: #09f;
+  animation: spin 1s ease infinite;
+}

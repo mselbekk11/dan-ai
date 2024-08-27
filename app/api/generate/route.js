@@ -6,7 +6,7 @@ const replicate = new Replicate({
 });
 
 const model =
-  'mselbekk11/app:477476670e29abcc195daf5f5546eb8ea79ae4f759a1abf922a241723fdd91ef';
+  'mselbekk11/mog:d2592d585156ab8e4e0750f228a7f91f6f1c523ce478c2e21aa456aea4ed4e73';
 
 export async function POST(request) {
   const { prompt } = await request.json();
