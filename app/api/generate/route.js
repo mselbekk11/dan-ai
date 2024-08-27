@@ -9,8 +9,11 @@ const model =
   'mselbekk11/mog:d2592d585156ab8e4e0750f228a7f91f6f1c523ce478c2e21aa456aea4ed4e73';
 
 export async function POST(request) {
+  console.log('API route started');
   try {
     const { prompt } = await request.json();
+    console.log('Received prompt:', prompt);
+
     const input = {
       width: 1024,
       height: 1024,
@@ -30,15 +33,20 @@ export async function POST(request) {
     console.log('Using model:', model);
     console.log('With input:', input);
 
-    console.log('Running...');
+    console.log('Running Replicate...');
     const output = await replicate.run(model, { input });
-    console.log('Done!', output);
+    console.log('Replicate finished. Output:', output);
+
+    if (!Array.isArray(output)) {
+      console.error('Unexpected output format:', output);
+      throw new Error('Unexpected output format');
+    }
 
     return NextResponse.json(output);
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error in API route:', error);
     return NextResponse.json(
-      { error: 'An error occurred while generating images' },
+      { error: error.message || 'An error occurred while generating images' },
       { status: 500 }
     );
   }

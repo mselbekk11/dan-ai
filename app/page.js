@@ -13,6 +13,7 @@ export default function Home() {
     setIsLoading(true);
     setError('');
     try {
+      console.log('Sending request to generate images');
       const response = await fetch('/api/generate', {
         method: 'POST',
         headers: {
@@ -20,17 +21,36 @@ export default function Home() {
         },
         body: JSON.stringify({ prompt }),
       });
-      const data = await response.json();
-      if (response.ok) {
-        setImages(data);
-      } else {
+
+      console.log('Response status:', response.status);
+      console.log('Response headers:', response.headers);
+
+      const text = await response.text();
+      console.log('Response text:', text);
+
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (parseError) {
+        console.error('Error parsing JSON:', parseError);
+        throw new Error('Invalid JSON response from server');
+      }
+
+      if (!response.ok) {
         throw new Error(
-          data.error || 'An error occurred while generating images'
+          data.error || `Server responded with status ${response.status}`
         );
       }
+
+      if (!Array.isArray(data)) {
+        console.error('Unexpected data format:', data);
+        throw new Error('Unexpected response format');
+      }
+
+      setImages(data);
     } catch (error) {
       console.error('Error generating images:', error);
-      setError(error.message);
+      setError(error.message || 'An unexpected error occurred');
     } finally {
       setIsLoading(false);
     }
