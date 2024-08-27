@@ -92,7 +92,7 @@ export default function Home() {
         <button
           onClick={generateImages}
           disabled={isLoading}
-          className='bg-gradient-to-r from-indigo-500 to-purple-500 rounded-b lg:rounded lg:rounded-l-none font-bold py-2 px-4 w-full lg:w-auto whitespace-nowrap flex-shrink-0 disabled:opacity-50 mt-4 lg:mt-0'
+          className='bg-gradient-to-r from-indigo-500 to-purple-500 rounded font-bold py-2 px-4 w-full lg:w-auto whitespace-nowrap flex-shrink-0 disabled:opacity-50 mt-4 lg:mt-0'
         >
           {isLoading ? 'Generating...' : 'Generate Images'}
         </button>
