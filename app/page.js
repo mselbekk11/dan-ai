@@ -74,7 +74,7 @@ export default function Home() {
 
   return (
     <main className='flex min-h-screen flex-col items-center p-4 lg:p-12'>
-      <h1 className='text-4xl font-bold mb-16 animate'>MORGAN AI</h1>
+      <h1 className='text-4xl font-bold mb-4 animate'>MORGAN AI</h1>
 
       <h3 className='text-sm font-bold mb-8'>
         This AI uses MOG as a reference to generate images, please start your
@@ -86,7 +86,7 @@ export default function Home() {
           type='text'
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
-          placeholder='A photo of MOG as a rapper'
+          placeholder='A photo of MOG dressed as a pig...'
           className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
         />
         <button
@@ -101,7 +101,8 @@ export default function Home() {
       {isLoading && (
         <div className='text-center'>
           <div className='spinner mx-auto mb-4'></div>
-          <p>Generating images... This may take 30-60 seconds</p>
+          <p>Generating images...</p>
+          <p>This may take 30-60 seconds</p>
         </div>
       )}
 
