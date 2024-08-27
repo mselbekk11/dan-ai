@@ -78,7 +78,7 @@ export default function Home() {
 
       {isLoading && (
         <div className='text-center'>
-          <ClipLoader color='#09f' size={50} className='mb-4' />
+          <div className='spinner mx-auto mb-4'></div>
           <p>Generating images... This may take 30-60 seconds</p>
         </div>
       )}
