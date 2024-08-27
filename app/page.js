@@ -24,7 +24,9 @@ export default function Home() {
       if (response.ok) {
         setImages(data);
       } else {
-        throw new Error(data.error || 'An error occurred');
+        throw new Error(
+          data.error || 'An error occurred while generating images'
+        );
       }
     } catch (error) {
       console.error('Error generating images:', error);
@@ -59,18 +61,18 @@ export default function Home() {
         prompt with &quot;A photo of MOG&quot;
       </h3>
 
-      <div className='w-full max-w-2xl mb-8 flex'>
+      <div className='w-full max-w-2xl mb-8 flex gap-4'>
         <input
           type='text'
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           placeholder='A photo of MOG as a rapper'
-          className='shadow appearance-none border rounded-l w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+          className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
         />
         <button
           onClick={generateImages}
           disabled={isLoading}
-          className='bg-gradient-to-r from-indigo-500 to-purple-500 rounded-r font-bold py-2 px-4 whitespace-nowrap flex-shrink-0 disabled:opacity-50'
+          className='bg-gradient-to-r from-indigo-500 to-purple-500 rounded font-bold py-2 px-4 whitespace-nowrap flex-shrink-0 disabled:opacity-50'
         >
           {isLoading ? 'Generating...' : 'Generate Images'}
         </button>
