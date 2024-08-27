@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { ClipLoader } from 'react-spinners';
 
 export default function Home() {
   const [prompt, setPrompt] = useState('');
