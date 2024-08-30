@@ -76,7 +76,7 @@ export default function Home() {
     <main className='flex min-h-screen flex-col items-center p-4 lg:p-12'>
       <h1 className='text-4xl font-bold mb-4 animate'>MORGAN AI</h1>
 
-      <h3 className='text-sm font-bold mb-8'>
+      <h3 className='text-sm font-bold mb-8 text-white'>
         This AI uses MOG as a reference to generate images, please start your
         prompt with &quot;A photo of MOG&quot;
       </h3>
@@ -92,7 +92,7 @@ export default function Home() {
         <button
           onClick={generateImages}
           disabled={isLoading}
-          className='bg-gradient-to-r from-indigo-500 to-purple-500 rounded font-bold py-2 px-4 w-full lg:w-auto whitespace-nowrap flex-shrink-0 disabled:opacity-50 mt-4 lg:mt-0'
+          className='bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded font-bold py-2 px-4 w-full lg:w-auto whitespace-nowrap flex-shrink-0 disabled:opacity-50 mt-4 lg:mt-0'
         >
           {isLoading ? 'Generating...' : 'Generate Images'}
         </button>
@@ -124,7 +124,7 @@ export default function Home() {
             >
               Download
             </button>
-            <p>{prompt}</p>
+            {/* <p>{prompt}</p> */}
           </div>
         ))}
       </div>
