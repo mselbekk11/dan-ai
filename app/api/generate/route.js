@@ -7,7 +7,7 @@ const replicate = new Replicate({
 });
 
 const model =
-  'mselbekk11/mog:d2592d585156ab8e4e0750f228a7f91f6f1c523ce478c2e21aa456aea4ed4e73';
+  'mselbekk11/dun:9aa47d7eb714e4b9618be7da4409f85d74602dc5102e36e9eeba6f8c7cc040da';
 
 export async function POST(request) {
   console.log('API route started');
@@ -48,7 +48,7 @@ export async function POST(request) {
     }
 
     console.log('Attempting to save images to Supabase');
-    const imagesToInsert = output.map(url => ({ url, prompt }));
+    const imagesToInsert = output.map((url) => ({ url, prompt }));
     console.log('Data to insert:', imagesToInsert);
 
     const { data, error: supabaseError } = await supabase
@@ -56,8 +56,15 @@ export async function POST(request) {
       .insert(imagesToInsert);
 
     if (supabaseError) {
-      console.error('Supabase error details:', JSON.stringify(supabaseError, null, 2));
-      throw new Error(`Failed to save images to database: ${supabaseError.message || 'Unknown error'}`);
+      console.error(
+        'Supabase error details:',
+        JSON.stringify(supabaseError, null, 2)
+      );
+      throw new Error(
+        `Failed to save images to database: ${
+          supabaseError.message || 'Unknown error'
+        }`
+      );
     }
 
     console.log('Images saved successfully');

@@ -97,8 +97,8 @@ export default function Home() {
       <h1 className='text-4xl font-bold mb-16 animate'>DAN AI</h1>
 
       <h3 className='text-sm font-bold mb-8 text-white'>
-        This AI uses MOG as a reference to generate images, please start your
-        prompt with &quot;A photo of MOG&quot;
+        This AI uses DUN as a reference to generate images, please start your
+        prompt with &quot;A photo of DUN&quot;
       </h3>
 
       <div className='w-full max-w-2xl mb-8 flex flex-col lg:flex-row gap-4'>
@@ -106,8 +106,8 @@ export default function Home() {
           type='text'
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
-          placeholder='A photo of MOG as a rapper'
-          className='shadow appearance-none border rounded rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2 lg:mb-0'
+          placeholder='A photo of DUN as a rapper'
+          className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2 lg:mb-0'
         />
         <button
           onClick={generateImages}
