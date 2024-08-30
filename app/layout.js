@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] });
 const imageURL = `https://www.morganai.vip/og.png`;
 
 export const metadata = {
-  title: 'Dan AI',
+  title: 'DUNIEL AI',
   description: 'Generate images of Dan',
   openGraph: {
     images: [imageURL],
