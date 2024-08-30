@@ -94,7 +94,7 @@ export default function Home() {
 
   return (
     <main className='flex min-h-screen flex-col items-center p-4 lg:p-12'>
-      <h1 className='text-4xl font-bold mb-16 animate'>MORGAN AI</h1>
+      <h1 className='text-4xl font-bold mb-16 animate'>MORGAN AII</h1>
 
       <h3 className='text-sm font-bold mb-8 text-white'>
         This AI uses MOG as a reference to generate images, please start your
