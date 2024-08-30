@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import Replicate from 'replicate';
+import { supabase } from '../../../lib/supabaseClient';
 
 const replicate = new Replicate({
   auth: process.env.REPLICATE_API_TOKEN,
@@ -13,6 +14,10 @@ export async function POST(request) {
   try {
     const { prompt } = await request.json();
     console.log('Received prompt:', prompt);
+
+    if (!process.env.REPLICATE_API_TOKEN) {
+      throw new Error('REPLICATE_API_TOKEN is not set');
+    }
 
     const input = {
       width: 1024,
@@ -39,14 +44,28 @@ export async function POST(request) {
 
     if (!Array.isArray(output)) {
       console.error('Unexpected output format:', output);
-      throw new Error('Unexpected output format');
+      throw new Error('Unexpected output format from Replicate');
     }
 
+    console.log('Attempting to save images to Supabase');
+    const imagesToInsert = output.map(url => ({ url, prompt }));
+    console.log('Data to insert:', imagesToInsert);
+
+    const { data, error: supabaseError } = await supabase
+      .from('images')
+      .insert(imagesToInsert);
+
+    if (supabaseError) {
+      console.error('Supabase error details:', JSON.stringify(supabaseError, null, 2));
+      throw new Error(`Failed to save images to database: ${supabaseError.message || 'Unknown error'}`);
+    }
+
+    console.log('Images saved successfully');
     return NextResponse.json(output);
   } catch (error) {
-    console.error('Error in API route:', error);
+    console.error('Detailed error in API route:', error);
     return NextResponse.json(
-      { error: error.message || 'An error occurred while generating images' },
+      { error: `Error: ${error.message}` },
       { status: 500 }
     );
   }
