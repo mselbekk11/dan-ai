@@ -94,7 +94,7 @@ export default function Home() {
 
   return (
     <main className='flex min-h-screen flex-col items-center p-4 lg:p-12'>
-      <h1 className='text-4xl font-bold mb-16 animate'>DAN AI</h1>
+      <h1 className='text-4xl font-bold mb-16 animate'>DUNIEL AI</h1>
 
       <h3 className='text-sm font-bold mb-8 text-white'>
         This AI uses DUN as a reference to generate images, please start your
@@ -150,7 +150,7 @@ export default function Home() {
       </div>
 
       {/* Display gallery */}
-      <h2 className='text-2xl font-bold mt-16 mb-8 text-white'>
+      <h2 className='mt-16 mb-8 text-2xl font-bold animate'>
         Image Gallery
       </h2>
       <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8 max-w-6xl w-full'>
